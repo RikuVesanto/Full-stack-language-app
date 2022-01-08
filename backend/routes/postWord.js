@@ -1,6 +1,6 @@
 const express = require("express");
 var router = express.Router();
-const connection = require("./database.js");
+const connection = require("./../database.js");
 
 router.post("/", async (req, res) => {
   let words = req.body;

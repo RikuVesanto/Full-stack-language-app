@@ -29,3 +29,5 @@ let connectionFunctions = {
     });
   },
 };
+
+module.exports = connectionFunctions;
