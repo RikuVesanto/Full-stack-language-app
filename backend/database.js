@@ -9,13 +9,13 @@ const connection = mysql.createPool({
 });
 
 let connectionFunctions = {
-  save: (word) => {
+  save: (words) => {
     connection.getConnection(function (err, connection) {
       if (err) throw err; // not connected!
       connection.query(
         `INSERT INTO words(finnish,english) VALUES (${connection.escape(
-          word.finnish
-        )},${connection.escape(word.english)})`,
+          words.finnish
+        )},${connection.escape(words.english)})`,
         function (error, results, fields) {
           // When done with the connection, release it.
           connection.release();
