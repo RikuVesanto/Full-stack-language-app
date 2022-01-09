@@ -28,6 +28,23 @@ let connectionFunctions = {
       );
     });
   },
+  findByEnglishWord: (englishWord) => {
+    function find(resolve, reject) {
+      connection.getConnection(function (err, connection) {
+        if (err) reject(err);
+        connection.query(
+          `SELECT finnish from words WHERE english= "${englishWord}"`,
+          (err, finnish) => {
+            if (err) reject(err);
+            resolve(finnish);
+            connection.release();
+          }
+        );
+      });
+    }
+    var promise = new Promise(find);
+    return promise;
+  },
 };
 
 module.exports = connectionFunctions;
