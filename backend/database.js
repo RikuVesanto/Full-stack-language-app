@@ -45,6 +45,20 @@ let connectionFunctions = {
     var promise = new Promise(find);
     return promise;
   },
+  findAllEnglishWords: () => {
+    function find(resolve, reject) {
+      connection.getConnection(function (err, connection) {
+        if (err) reject(err);
+        connection.query("SELECT english FROM words", (err, words) => {
+          resolve(words);
+          connection.release();
+        });
+      });
+    }
+
+    var promise = new Promise(find);
+    return promise;
+  },
 };
 
 module.exports = connectionFunctions;
