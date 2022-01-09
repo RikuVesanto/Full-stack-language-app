@@ -9,6 +9,7 @@ const connection = require("./database.js");
 
 app.use(express.json());
 app.use("/words", postWord);
+app.use("/words", getWords);
 app.use("/words", getWord);
 
 const server = app.listen(8080, () => {
