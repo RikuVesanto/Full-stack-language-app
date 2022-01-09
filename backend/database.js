@@ -76,6 +76,27 @@ let connectionFunctions = {
       );
     });
   },
+  updateWord: (words, id) => {
+    connection.getConnection(function (err, connection) {
+      if (err) throw err; // not connected!
+      connection.query(
+        `UPDATE words SET finnish=${connection.escape(
+          words.finnish
+        )}, english=${connection.escape(
+          words.english
+        )} WHERE wordId =${connection.escape(id)}`,
+        function (error, results, fields) {
+          // When done with the connection, release it.
+          connection.release();
+
+          // Handle error after the release.
+          if (error) throw error;
+
+          // Don't use the connection here, it has been returned to the pool.
+        }
+      );
+    });
+  },
 };
 
 module.exports = connectionFunctions;
