@@ -12,6 +12,7 @@ app.use("/words", postWord);
 app.use("/words", getWords);
 app.use("/words", getWord);
 app.use("/words", deleteWord);
+app.use("/words", modifyWord);
 
 const server = app.listen(8080, () => {
   console.log(`Listening on port ${server.address().port}`);
