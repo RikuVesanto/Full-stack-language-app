@@ -4,6 +4,7 @@ import Table from "./Table";
 function ExerciseView(props) {
   const [englishWords, setEnglishWords] = useState([]);
   const [finnishWords, setFinnishWords] = useState([]);
+  const [finnishGuessWords, setFinnishGuessWords] = useState([]);
 
   useEffect(() => {
     loadData().then((data) => loopData(data));
@@ -32,6 +33,17 @@ function ExerciseView(props) {
       setFinnishWords(tempFinnishWords);
     }
   }
+
+  function checkScore() {
+    var score;
+    for (var i = 0; i < finnishWords.length; i++) {
+      if (finnishWords[i] === finnishGuessWords[i]) {
+        score++;
+      }
+    }
+    return score;
+  }
+
   return (
     <div>
       <Table englishWords={englishWords} />
