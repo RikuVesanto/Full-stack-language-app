@@ -40,21 +40,29 @@ function ExerciseView(props) {
     let tempFinnishGuessWords = finnishGuessWords;
     tempFinnishGuessWords[index] = word;
     setFinnishGuessWords(tempFinnishGuessWords);
+    console.log("word is: ", word);
+    console.log(finnishGuessWords);
   };
 
   const checkScore = () => {
-    var score;
+    var score = 0;
     for (var i = 0; i < finnishWords.length; i++) {
       if (finnishWords[i] === finnishGuessWords[i]) {
         score++;
+        console.log(score);
       }
     }
+    console.log("final score is: ", score);
     return score;
   };
 
   return (
     <div>
-      <Table englishWords={englishWords} GuessWordHandle={GuessWordHandler} />
+      <Table
+        englishWords={englishWords}
+        GuessWordHandler={GuessWordHandler}
+        checkScore={checkScore}
+      />
     </div>
   );
 }
