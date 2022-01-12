@@ -45,11 +45,11 @@ let connectionFunctions = {
     var promise = new Promise(find);
     return promise;
   },
-  findAllEnglishWords: () => {
+  findAllWords: () => {
     function find(resolve, reject) {
       connection.getConnection(function (err, connection) {
         if (err) reject(err);
-        connection.query("SELECT english FROM words", (err, words) => {
+        connection.query("SELECT english,finnish FROM words", (err, words) => {
           resolve(words);
           connection.release();
         });
