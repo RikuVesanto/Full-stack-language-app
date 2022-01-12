@@ -6,7 +6,7 @@ function AdminView(props) {
   return (
     <div>
       <h1>Add a Word</h1>
-      <form onSubmit={props.newWordHandler}>
+      <form onSubmit={() => props.newWordHandler(finnishWord, englishWord)}>
         <label>In English:</label>
         <br />
         <input
