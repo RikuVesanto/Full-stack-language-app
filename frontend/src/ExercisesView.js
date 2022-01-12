@@ -20,18 +20,15 @@ function ExerciseView(props) {
     var tempEnglishWords;
     var tempFinnishWords;
     for (var i = 0; i <= data.length; i++) {
-      if (i === 0) {
-        tempEnglishWords = [].concat(data[i].english);
-        tempFinnishWords = [].concat(data[i].finnish);
-      } else {
-        tempEnglishWords = englishWords.concat(data[i].english);
-        tempFinnishWords = finnishWords.concat(data[i].finnish);
-      }
-      console.log(tempEnglishWords);
-      console.log(tempFinnishWords);
+      tempEnglishWords = englishWords;
+      tempEnglishWords.push(data[i].english);
+      tempFinnishWords = finnishWords;
+      tempFinnishWords.push(data[i].finnish);
+
       setEnglishWords(tempEnglishWords);
       setFinnishWords(tempFinnishWords);
       setFinnishGuessWords(Array(data.length));
+      console.log(englishWords);
     }
   }
 
