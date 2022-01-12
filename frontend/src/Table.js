@@ -7,7 +7,13 @@ function Table(props) {
       <tr key={i}>
         <td>{props.englishWords[i]}</td>
         <td>
-          <TextField />;
+          <TextField
+            id={i}
+            onChange={(event) =>
+              props.GuessWordHandler(event, event.target.id, event.target.value)
+            }
+          />
+          ;
         </td>
       </tr>
     );

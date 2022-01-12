@@ -31,10 +31,18 @@ function ExerciseView(props) {
       console.log(tempFinnishWords);
       setEnglishWords(tempEnglishWords);
       setFinnishWords(tempFinnishWords);
+      setFinnishGuessWords(Array(data.length));
     }
   }
 
-  function checkScore() {
+  const GuessWordHandler = (event, index, word) => {
+    event.preventDefault();
+    let tempFinnishGuessWords = finnishGuessWords;
+    tempFinnishGuessWords[index] = word;
+    setFinnishGuessWords(tempFinnishGuessWords);
+  };
+
+  const checkScore = () => {
     var score;
     for (var i = 0; i < finnishWords.length; i++) {
       if (finnishWords[i] === finnishGuessWords[i]) {
@@ -42,11 +50,11 @@ function ExerciseView(props) {
       }
     }
     return score;
-  }
+  };
 
   return (
     <div>
-      <Table englishWords={englishWords} />
+      <Table englishWords={englishWords} GuessWordHandle={GuessWordHandler} />
     </div>
   );
 }
