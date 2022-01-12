@@ -75,7 +75,13 @@ function App() {
           />
           <Route
             path="/admin"
-            element={<AdminView newWordHandler={newWordHandler} />}
+            element={
+              <AdminView
+                newWordHandler={newWordHandler}
+                englishWords={englishWords}
+                finnishWords={finnishWords}
+              />
+            }
           />
         </Routes>
       </BrowserRouter>

@@ -3,6 +3,25 @@ import React, { useState } from "react";
 function AdminView(props) {
   const [finnishWord, setFinnishWord] = useState([]);
   const [englishWord, setEnglishWord] = useState([]);
+  const [editState, setEditState] = useState(false);
+
+  const deleteWord = () => {};
+
+  var tableRows = [];
+  for (var i = 0; i < props.englishWords.length; i++) {
+    tableRows.push(
+      <tr key={i}>
+        <td>{props.englishWords[i]}</td>
+        <td>{props.finnishWords[i]}</td>
+        <td>
+          <button onClick={() => setEditState(true)}>Edit</button>
+        </td>
+        <td>
+          <button onClick={() => deleteWord()}>Delete</button>
+        </td>
+      </tr>
+    );
+  }
   return (
     <div>
       <h1>Add a Word</h1>
@@ -31,6 +50,17 @@ function AdminView(props) {
         <br />
         <input type="submit" value="Add Word" />
       </form>
+      <table>
+        <thead>
+          <tr>
+            <th>English</th>
+            <th>Finnish</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>{tableRows}</tbody>
+      </table>
     </div>
   );
 }
