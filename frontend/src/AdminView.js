@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 function AdminView(props) {
   const [finnishWord, setFinnishWord] = useState([]);
   const [englishWord, setEnglishWord] = useState([]);
   const [editState, setEditState] = useState(false);
 
-  const deleteWord = () => {};
+  const deleteWord = (word) => {
+    axios.delete("http://localhost:8080/words/" + word);
+  };
 
   var tableRows = [];
   for (var i = 0; i < props.englishWords.length; i++) {
@@ -17,7 +20,12 @@ function AdminView(props) {
           <button onClick={() => setEditState(true)}>Edit</button>
         </td>
         <td>
-          <button onClick={() => deleteWord()}>Delete</button>
+          <button
+            id={props.englishWords[i]}
+            onClick={(event) => deleteWord(event.target.id)}
+          >
+            Delete
+          </button>
         </td>
       </tr>
     );
