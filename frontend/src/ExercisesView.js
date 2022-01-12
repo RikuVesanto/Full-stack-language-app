@@ -24,11 +24,9 @@ function ExerciseView(props) {
       tempEnglishWords.push(data[i].english);
       tempFinnishWords = finnishWords;
       tempFinnishWords.push(data[i].finnish);
-
       setEnglishWords(tempEnglishWords);
       setFinnishWords(tempFinnishWords);
       setFinnishGuessWords(Array(data.length));
-      console.log(englishWords);
     }
   }
 
@@ -37,8 +35,6 @@ function ExerciseView(props) {
     let tempFinnishGuessWords = finnishGuessWords;
     tempFinnishGuessWords[index] = word;
     setFinnishGuessWords(tempFinnishGuessWords);
-    console.log("word is: ", word);
-    console.log(finnishGuessWords);
   };
 
   const checkScore = () => {
@@ -46,11 +42,13 @@ function ExerciseView(props) {
     for (var i = 0; i < finnishWords.length; i++) {
       if (finnishWords[i] === finnishGuessWords[i]) {
         score++;
-        console.log(score);
       }
     }
-    console.log("final score is: ", score);
     return score;
+  };
+
+  const maxScore = () => {
+    return englishWords.length;
   };
 
   return (
@@ -59,6 +57,7 @@ function ExerciseView(props) {
         englishWords={englishWords}
         GuessWordHandler={GuessWordHandler}
         checkScore={checkScore}
+        maxScore={maxScore}
       />
     </div>
   );

@@ -5,7 +5,11 @@ function Table(props) {
   const [showScore, setShowScore] = useState(false);
   var displayScore = [];
   if (showScore) {
-    displayScore.push(<p key="score">{props.checkScore()}</p>);
+    displayScore.push(
+      <p key="score">
+        {props.checkScore()} / {props.maxScore()}
+      </p>
+    );
   } else {
     displayScore.push(
       <button key="scoreButton" onClick={() => setShowScore(true)}>
