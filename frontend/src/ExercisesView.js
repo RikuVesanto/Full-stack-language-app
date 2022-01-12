@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Table from "./Table";
 
 function ExerciseView(props) {
   const [englishWords, setEnglishWords] = useState([]);
@@ -27,9 +28,7 @@ function ExerciseView(props) {
   }
   return (
     <div>
-      {englishWords.map((word) => (
-        <p key={word}>{word}</p>
-      ))}
+      <Table englishWords={englishWords} />
     </div>
   );
 }
