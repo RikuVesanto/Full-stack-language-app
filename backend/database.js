@@ -76,7 +76,7 @@ let connectionFunctions = {
       );
     });
   },
-  updateWord: (words, id) => {
+  updateWord: (words) => {
     connection.getConnection(function (err, connection) {
       if (err) throw err; // not connected!
       connection.query(
@@ -84,8 +84,9 @@ let connectionFunctions = {
           words.finnish
         )}, english=${connection.escape(
           words.english
-        )} WHERE wordId =${connection.escape(id)}`,
+        )} WHERE english =${connection.escape(words.old)}`,
         function (error, results, fields) {
+          console.log(results);
           // When done with the connection, release it.
           connection.release();
 
