@@ -12,9 +12,19 @@ function App() {
 
   const newWordHandler = (finnishWord, englishWord) => {
     var data = { finnish: finnishWord, english: englishWord };
-    console.log(data);
-
     axios.post("http://localhost:8080/words/", data).then(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
+
+  const editedWordHandler = (finnishWord, englishWord, oldWord) => {
+    var data = { finnish: finnishWord, english: englishWord, old: oldWord };
+    axios.post("http://localhost:8080/words/edit", data).then(
       (response) => {
         console.log(response);
       },
@@ -78,8 +88,11 @@ function App() {
             element={
               <AdminView
                 newWordHandler={newWordHandler}
+                editedWordHandler={editedWordHandler}
                 englishWords={englishWords}
                 finnishWords={finnishWords}
+                setEnglishWords={setEnglishWords}
+                setFinnishWords={setFinnishWords}
               />
             }
           />
