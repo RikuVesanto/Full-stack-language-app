@@ -60,3 +60,18 @@
   font-size: 17px;
   font-family: "Courier New", Courier, monospace;
 }
+
+.table {
+  background-color: #bfbfbf;
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+}
+
+.container {
+  margin-left: 30px;
+}
+
+.form {
+  margin-bottom: 20px;
+}

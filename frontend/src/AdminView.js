@@ -30,6 +30,7 @@ function AdminView(props) {
       <div>
         <h1>Edit a Word</h1>
         <form
+          className="form"
           onSubmit={() =>
             props.editedWordHandler(finnishWord, englishWord, oldWord)
           }
@@ -64,7 +65,10 @@ function AdminView(props) {
     form = (
       <div>
         <h1>Add a Word</h1>
-        <form onSubmit={() => props.newWordHandler(finnishWord, englishWord)}>
+        <form
+          className="form"
+          onSubmit={() => props.newWordHandler(finnishWord, englishWord)}
+        >
           <label>In English:</label>
           <br />
           <input
@@ -124,14 +128,14 @@ function AdminView(props) {
     );
   }
   return (
-    <div>
+    <div className="container">
       {form}
-      <table>
+      <table className="table">
         <thead>
           <tr>
             <th>English</th>
             <th>Finnish</th>
-            <th>Update</th>
+            <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>

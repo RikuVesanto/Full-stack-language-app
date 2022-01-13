@@ -23,7 +23,7 @@ function ExerciseView(props) {
   };
 
   return (
-    <div>
+    <div className="container">
       <Table
         englishWords={props.englishWords}
         GuessWordHandler={GuessWordHandler}
