@@ -9,20 +9,19 @@ function AdminView(props) {
 
   const deleteWord = (removedWord) => {
     const removeFinnishWord = (removedFinnishWord) => {
-      console.log(props.finnishWords);
       var tempFinnishWords = props.finnishWords.filter(
-        (word) => word !== removedFinnishWord[0]
+        (word) => word !== removedFinnishWord.data[0].finnish
       );
       props.setFinnishWords(tempFinnishWords);
     };
     axios
-      .get("http://localhost:8080/words/" + removedWord)
+      .get(`http://localhost:8080/words/${removedWord}`)
       .then((response) => removeFinnishWord(response));
     var tempEnglishWords = props.englishWords.filter(
       (word) => word !== removedWord
     );
     props.setEnglishWords(tempEnglishWords);
-    axios.delete("http://localhost:8080/words/" + removedWord);
+    axios.delete(`http://localhost:8080/words/${removedWord}`);
   };
 
   var form;
