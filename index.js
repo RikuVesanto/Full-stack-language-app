@@ -7,9 +7,9 @@ const postWord = require("./routes/postWord.js");
 const deleteWord = require("./routes/deleteWord.js");
 const modifyWord = require("./routes/modifyWord.js");
 
+app.use(express.static("./frontend/build"));
 app.use(cors());
 app.use(express.json());
-app.use(express.static("./frontend/build/"));
 app.use("/words", postWord);
 app.use("/words", getWords);
 app.use("/words", getWord);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 import ExercisesView from "./ExercisesView";
@@ -76,7 +76,7 @@ function App() {
 
   return (
     <div>
-      <BrowserRouter>
+      <HashRouter>
         <div className="topnav">
           <div id="myLinks">
             <Link className="link" to="/exercises">
@@ -113,7 +113,7 @@ function App() {
             }
           />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
