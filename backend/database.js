@@ -9,6 +9,10 @@ const connection = mysql.createPool({
 });
 
 let connectionFunctions = {
+  /**
+   * Saves a word pair into the database.
+   * @param {object} words - Holds the word data that is put into the database.
+   */
   save: (words) => {
     connection.getConnection(function (err, connection) {
       if (err) throw err; // not connected!
@@ -17,17 +21,16 @@ let connectionFunctions = {
           words.finnish
         )},${connection.escape(words.english)})`,
         function (error, results, fields) {
-          // When done with the connection, release it.
           connection.release();
-
-          // Handle error after the release.
           if (error) throw error;
-
-          // Don't use the connection here, it has been returned to the pool.
         }
       );
     });
   },
+  /**
+   * Finds a Finnish word from the database.
+   * @param {string} englishWord - An English word to help find the Finnish word pair.
+   */
   findByEnglishWord: (englishWord) => {
     function find(resolve, reject) {
       connection.getConnection(function (err, connection) {
@@ -45,6 +48,7 @@ let connectionFunctions = {
     var promise = new Promise(find);
     return promise;
   },
+  /**Takes all word pairs from the database.*/
   findAllWords: () => {
     function find(resolve, reject) {
       connection.getConnection(function (err, connection) {
@@ -55,27 +59,29 @@ let connectionFunctions = {
         });
       });
     }
-
     var promise = new Promise(find);
     return promise;
   },
+  /**
+   * Deletes an English word from the database.
+   * @param {string} englishWord - An English word to delete from the database.
+   */
   deleteWord: (englishWord) => {
     connection.getConnection(function (err, connection) {
       if (err) throw err;
       connection.query(
         `DELETE FROM words WHERE english= "${englishWord}"`,
         function (error, results, fields) {
-          // When done with the connection, release it.
           connection.release();
-
-          // Handle error after the release.
           if (error) throw error;
-
-          // Don't use the connection here, it has been returned to the pool.
         }
       );
     });
   },
+  /**
+   * Updates a word pair into the database.
+   * @param {object} words - Holds the word data that is put into the database and the old word to know what to update.
+   */
   updateWord: (words) => {
     connection.getConnection(function (err, connection) {
       if (err) throw err; // not connected!
@@ -86,14 +92,8 @@ let connectionFunctions = {
           words.english
         )} WHERE english =${connection.escape(words.old)}`,
         function (error, results, fields) {
-          console.log(results);
-          // When done with the connection, release it.
           connection.release();
-
-          // Handle error after the release.
           if (error) throw error;
-
-          // Don't use the connection here, it has been returned to the pool.
         }
       );
     });

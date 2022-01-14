@@ -2,11 +2,19 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function AdminView(props) {
+  //stores the new word pairs being created by the form
   const [finnishWord, setFinnishWord] = useState([]);
   const [englishWord, setEnglishWord] = useState([]);
+  //stores the old word that is being edited
   const [oldWord, setOldWord] = useState("");
+  //changes the form between editing and adding new words
   const [editState, setEditState] = useState(false);
 
+  /**
+   * Sends a delete request to remove the word from the database and filters the local state
+   * variables from having the word.
+   * @param {array} removedWord - The word that is being removed.
+   */
   const deleteWord = (removedWord) => {
     const removeFinnishWord = (removedFinnishWord) => {
       var tempFinnishWords = props.finnishWords.filter(
@@ -107,7 +115,9 @@ function AdminView(props) {
           <button
             id={i}
             onClick={(event) => {
+              //changes the form to editing state
               setEditState(true);
+              //stores which words are being edited
               setFinnishWord(props.finnishWords[event.target.id]);
               setEnglishWord(props.englishWords[event.target.id]);
               setOldWord(props.englishWords[event.target.id]);

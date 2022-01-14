@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 
 function Table(props) {
+  //changes between showing the score button and the score
   const [showScore, setShowScore] = useState(false);
   var displayScore = [];
   if (showScore) {

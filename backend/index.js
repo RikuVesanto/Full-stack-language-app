@@ -6,7 +6,6 @@ const getWords = require("./routes/getWords.js");
 const postWord = require("./routes/postWord.js");
 const deleteWord = require("./routes/deleteWord.js");
 const modifyWord = require("./routes/modifyWord.js");
-const connection = require("./database.js");
 
 app.use(cors());
 app.use(express.json());
@@ -16,6 +15,7 @@ app.use("/words", getWord);
 app.use("/words", deleteWord);
 app.use("/words/edit", modifyWord);
 
+/** Starts the server for listening to http requests.*/
 const server = app.listen(8080, () => {
   console.log(`Listening on port ${server.address().port}`);
 });

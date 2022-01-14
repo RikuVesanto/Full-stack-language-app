@@ -6,10 +6,17 @@ import ExercisesView from "./ExercisesView";
 import AdminView from "./AdminView";
 
 function App() {
+  //store the word pairs
   const [englishWords, setEnglishWords] = useState([]);
   const [finnishWords, setFinnishWords] = useState([]);
+  //store the guessed words
   const [finnishGuessWords, setFinnishGuessWords] = useState([]);
 
+  /**
+   * Sends a post request to store the new word pair into the database.
+   * @param {string} finnishWord - A finnish word.
+   * @param {string} englishWord - An english word.
+   */
   const newWordHandler = (finnishWord, englishWord) => {
     var data = { finnish: finnishWord, english: englishWord };
     axios.post("http://localhost:8080/words/", data).then(
@@ -22,6 +29,12 @@ function App() {
     );
   };
 
+  /**
+   * Sends a post request to edit the word pair in the database.
+   * @param {string} finnishWord - A finnish word that was edited.
+   * @param {string} englishWord - An english word that was edited.
+   * @param {string} oldWord - The old word to help know which word pair to save the edits to.
+   */
   const editedWordHandler = (finnishWord, englishWord, oldWord) => {
     var data = { finnish: finnishWord, english: englishWord, old: oldWord };
     axios.post("http://localhost:8080/words/edit", data).then(
@@ -38,19 +51,22 @@ function App() {
     loadData().then((data) => loopData(data));
   }, []);
 
+  /**Fetches the initial word data*/
   async function loadData() {
     var data = await fetch(`http://localhost:8080/words`);
     var dataObject = data.json();
     return dataObject;
   }
 
+  /**
+   * Saves the word pairs into local state variables.
+   * @param {array} data - An array of word pair objects.
+   */
   function loopData(data) {
-    var tempEnglishWords;
-    var tempFinnishWords;
     for (var i = 0; i <= data.length; i++) {
-      tempEnglishWords = englishWords;
+      var tempEnglishWords = englishWords;
       tempEnglishWords.push(data[i].english);
-      tempFinnishWords = finnishWords;
+      var tempFinnishWords = finnishWords;
       tempFinnishWords.push(data[i].finnish);
       setEnglishWords(tempEnglishWords);
       setFinnishWords(tempFinnishWords);
