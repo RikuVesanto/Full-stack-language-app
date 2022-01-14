@@ -1,0 +1,26 @@
+{
+  "name": "full-stack-language-app",
+  "version": "1.0.0",
+  "description": "This app is meant to be a practice environment that lets you practice exactly the new words in a language that you want to.",
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RikuVesanto/Full-stack-language-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RikuVesanto/Full-stack-language-app/issues"
+  },
+  "homepage": "https://github.com/RikuVesanto/Full-stack-language-app#readme"
+}
