@@ -8,9 +8,9 @@ This project was created as a student project in order to practice creating a fu
 
 ## Screenshots
 
-[image](/images/example1.PNG)
+![image](/images/example1.PNG)
 
-[image](/images/example2.PNG)
+![image](/images/example2.PNG)
 
 ## Tech used
 
