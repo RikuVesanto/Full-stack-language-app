@@ -17,6 +17,6 @@ app.use("/words", deleteWord);
 app.use("/words/edit", modifyWord);
 
 /** Starts the server for listening to http requests.*/
-const server = app.listen(8080, () => {
+const server = app.listen(process.env.PORT, () => {
   console.log(`Listening on port ${server.address().port}`);
 });
