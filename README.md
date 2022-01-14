@@ -27,3 +27,7 @@ This project was created as a student project in order to practice creating a fu
 - Allows adding your custom words.
 
 - Delete and edit functionality to swap out word sets.
+
+## Try it out
+
+You can run the app over at [heroku](https://full-stack-language-app.herokuapp.com/)
