@@ -23,13 +23,13 @@ function AdminView(props) {
       props.setFinnishWords(tempFinnishWords);
     };
     axios
-      .get(`http://localhost:8080/words/${removedWord}`)
+      .get(`/words/${removedWord}`)
       .then((response) => removeFinnishWord(response));
     var tempEnglishWords = props.englishWords.filter(
       (word) => word !== removedWord
     );
     props.setEnglishWords(tempEnglishWords);
-    axios.delete(`http://localhost:8080/words/${removedWord}`);
+    axios.delete(`/words/${removedWord}`);
   };
 
   var form;

@@ -9,7 +9,7 @@ const modifyWord = require("./routes/modifyWord.js");
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static("../frontend/build"));
+app.use(express.static("./frontend/build/"));
 app.use("/words", postWord);
 app.use("/words", getWords);
 app.use("/words", getWord);

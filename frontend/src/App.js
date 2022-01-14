@@ -19,7 +19,7 @@ function App() {
    */
   const newWordHandler = (finnishWord, englishWord) => {
     var data = { finnish: finnishWord, english: englishWord };
-    axios.post("http://localhost:8080/words/", data).then(
+    axios.post("/words/", data).then(
       (response) => {
         console.log(response);
       },
@@ -37,7 +37,7 @@ function App() {
    */
   const editedWordHandler = (finnishWord, englishWord, oldWord) => {
     var data = { finnish: finnishWord, english: englishWord, old: oldWord };
-    axios.post("http://localhost:8080/words/edit", data).then(
+    axios.post("/words/edit", data).then(
       (response) => {
         console.log(response);
       },
@@ -53,7 +53,7 @@ function App() {
 
   /**Fetches the initial word data*/
   async function loadData() {
-    var data = await fetch(`http://localhost:8080/words`);
+    var data = await fetch(`/words`);
     var dataObject = data.json();
     return dataObject;
   }
