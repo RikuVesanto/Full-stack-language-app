@@ -7,13 +7,17 @@ function Table(props) {
   var displayScore = [];
   if (showScore) {
     displayScore.push(
-      <p key="score">
+      <p className="submit" key="score">
         {props.checkScore()} / {props.maxScore()}
       </p>
     );
   } else {
     displayScore.push(
-      <button key="scoreButton" onClick={() => setShowScore(true)}>
+      <button
+        className="submit"
+        key="scoreButton"
+        onClick={() => setShowScore(true)}
+      >
         Check Score
       </button>
     );
@@ -34,7 +38,6 @@ function Table(props) {
               )
             }
           />
-          ;
         </td>
       </tr>
     );

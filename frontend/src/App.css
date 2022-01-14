@@ -39,7 +39,7 @@
 
 .topnav {
   overflow: hidden;
-  background-color: #40817a;
+  background-color: #bfbfbf;
   position: relative;
 }
 .topnav .link {
@@ -70,8 +70,13 @@
 
 .container {
   margin-left: 30px;
+  margin-top: 20px;
 }
 
 .form {
   margin-bottom: 20px;
+}
+
+.submit {
+  margin-top: 15px;
 }

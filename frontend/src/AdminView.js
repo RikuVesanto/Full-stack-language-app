@@ -99,7 +99,7 @@ function AdminView(props) {
             required
           />
           <br />
-          <input type="submit" value="Add Word" />
+          <input className="submit" type="submit" value="Add Word" />
         </form>
       </div>
     );
